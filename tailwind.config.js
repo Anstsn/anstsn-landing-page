@@ -1,11 +1,14 @@
-const { colors } = require('tailwindcss/colors')
+const { colors } = require('tailwindcss/colors');
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
         './app/**/*.{ts,tsx}',
         './app/*.{ts,tsx}',
-        './components/**/*.{ts,tsx}'
+        './src/components/**/*.{ts,tsx}',
+        './src/screens/**/*.{ts,tsx}',
+        './src/**/*.{ts,tsx}'
     ],
     theme: {
         screens: {
@@ -20,8 +23,14 @@ module.exports = {
             },
         },
         extend: {
+            fontFamily: {
+                inter: ['var(--font-inter)', ...fontFamily.sans],
+                bhutuka: ['var(--font-bhutuka)', ...fontFamily.sans],
+            },
             fontSize: {
-                // 'h-base': ['60px', { lineHeight: '140%', fontWeight: '400', }],
+                base: ['18px', { lineHeight: '140%', fontWeight: '400', }],
+                l: ['24px', { lineHeight: '140%', fontWeight: '400', }],
+                xl: ['32px', { lineHeight: '140%', fontWeight: '400', }],
             },
             backgroundImage: {
                 none: 'unset',
@@ -29,6 +38,10 @@ module.exports = {
             },
             colors: {
                 ...colors,
+
+                general: {
+                    text: '#ffffff',
+                }
             },
             dropShadow: {
             },
@@ -39,20 +52,28 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/typography'),
-        // function ({ addComponents }) {
-        //     addComponents({
-        //         '.container': {
-        //             maxWidth: '100%',
-        //
-        //             '@screen mobile': {
-        //                 maxWidth: '480px'
-        //             },
-        //
-        //             '@screen large': {
-        //                 maxWidth: '1440px'
-        //             }
-        //         },
-        //     });
-        // }
+        function ({ addComponents }) {
+            addComponents({
+                '.container': {
+                    maxWidth: '100%',
+
+                    '@screen mobile': {
+                        maxWidth: '480px'
+                    },
+
+                    '@screen desktop': {
+                        maxWidth: 'unset'
+                    }
+                },
+                '.centered': {
+                    width: '100vw',
+                    height: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }
+            });
+        }
     ]
 };
