@@ -4,7 +4,8 @@ const nextConfig = {
     reactStrictMode: true,
     output: 'standalone',
     experimental: {
-        appDir: true
+        appDir: true,
+        allowMiddlewareResponseBody: true,
     },
     webpack: (config, options) => {
         config.module.rules.push({
