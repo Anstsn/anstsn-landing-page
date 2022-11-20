@@ -2,16 +2,16 @@ import '../styles/tailwind.scss';
 import '../styles/globals.scss';
 
 // import { Inter } from '@next/font/google';
-import { BhuTuka_Expanded_One } from '@next/font/google';
+import { Ruda } from '@next/font/google';
 
 // const inter = Inter({
 //     variable: '--font-inter',
 // });
 {/*<div className={`${inter.variable} font-inter`}>*/}
 
-const bhutuka = BhuTuka_Expanded_One({
+const ruda = Ruda({
     weight: '400',
-    variable: '--font-bhutuka',
+    variable: '--font-ruda',
 });
 
 interface RootLayoutProps {
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang={'en'}>
             <body>
-                <div className={`${bhutuka.variable} font-bhutuka`}>
+                <div className={`${ruda.variable} font-ruda`}>
                     {children}
                 </div>
             </body>

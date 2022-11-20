@@ -24,8 +24,8 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                inter: ['var(--font-inter)', ...fontFamily.sans],
-                bhutuka: ['var(--font-bhutuka)', ...fontFamily.sans],
+                // inter: ['var(--font-inter)', ...fontFamily.sans],
+                ruda: ['var(--font-ruda)', ...fontFamily.sans],
             },
             fontSize: {
                 base: ['18px', { lineHeight: '140%', fontWeight: '400', }],
