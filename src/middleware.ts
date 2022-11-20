@@ -9,6 +9,7 @@ export function middleware(request: NextRequest) {
         request: {
             headers: requestHeaders,
         },
+        // status: 404,
     });
 
     response.headers.set('x-version', '13');
