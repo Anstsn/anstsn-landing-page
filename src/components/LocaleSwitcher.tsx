@@ -31,8 +31,8 @@ export const LocaleSwitcher: FC<LocaleSwitcherProps> = (props) => {
 
     return (
         <div className={classNames(className, '')}>
-            <Link href={`/ru/${url}`} shallow={false} className={classNames(currentLocale === 'ru' && DISABLED_LINK_CLASS_NAMES)}>RU</Link>
-            <Link href={`/en/${url}`} className={classNames(currentLocale === 'en' && DISABLED_LINK_CLASS_NAMES)}>EN</Link>
+            <Link href={`${url}`} className={classNames(currentLocale === 'ru' && DISABLED_LINK_CLASS_NAMES)}>RU</Link>
+            <Link href={`/en${url}`} className={classNames(currentLocale === 'en' && DISABLED_LINK_CLASS_NAMES)}>EN</Link>
         </div>
     )
 }

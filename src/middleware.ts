@@ -6,7 +6,7 @@ const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
     const { nextUrl } = request;
-    
+
     if (PUBLIC_FILE.test(nextUrl.pathname) || nextUrl.pathname.includes("/api")) {
         return undefined;
     }
