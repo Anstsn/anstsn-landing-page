@@ -1,25 +1,22 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import i18nConfig from './i18n/i18n.config';
+
+const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
     const { nextUrl } = request;
 
-    if (nextUrl.pathname === '/') {
-        return NextResponse.redirect(new URL('/ru', request.url))
+    if (PUBLIC_FILE.test(nextUrl.pathname) || nextUrl.pathname.includes("/api")) {
+        return undefined;
     }
 
-    // const requestHeaders = new Headers(request.headers);
-    // requestHeaders.set('x-version', '13');
-    //
-    // const response = NextResponse.next({
-    //     request: {
-    //         headers: requestHeaders,
-    //     },
-    //     // status: 404,
-    // });
-    //
-    // response.headers.set('x-version', '13');
-    // return response;
+    if (!i18nConfig.locales.some(locale => nextUrl.pathname.startsWith(`/${locale}`))) {
+        const { origin } = new URL(request.nextUrl);
+        const urlWithoutOrigin = request.nextUrl.toString().replace(origin, '');
+
+        return NextResponse.redirect(new URL(`/${i18nConfig.defaultLocale}${urlWithoutOrigin}`, request.url))
+    }
 }
 
 export const config = {

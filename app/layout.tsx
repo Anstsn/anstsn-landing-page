@@ -1,9 +1,10 @@
 import '../styles/tailwind.scss';
 import '../styles/globals.scss';
 
-// import { Inter } from '@next/font/google';
+import React, { FC } from 'react';
 import { Ruda } from '@next/font/google';
 
+// import { Inter } from '@next/font/google';
 // const inter = Inter({
 //     variable: '--font-inter',
 // });
@@ -14,10 +15,11 @@ const ruda = Ruda({
     variable: '--font-ruda',
 });
 
-interface RootLayoutProps {
+export type RootLayoutProps = {
     children: React.ReactNode;
 }
-export default function RootLayout({ children }: RootLayoutProps) {
+
+const RootLayout:FC<RootLayoutProps> = ({ children }) => {
     return (
         <html lang={'en'}>
             <body>
@@ -28,3 +30,5 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </html>
     );
 }
+
+export default RootLayout;
